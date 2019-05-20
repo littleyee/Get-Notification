@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.SQLException;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
@@ -48,7 +49,8 @@ public class GetNotificationService extends NotificationListenerService {
                 //get package name
                 String pack = sbn.getPackageName();
 
-                //String ticker = sbn.getNotification().tickerText.toString();
+                //get package posted time
+                String timestamp = Long.toString(sbn.getPostTime());
 
                 //get title of notification
                 String title = extras.getString(Notification.EXTRA_TITLE, "");
@@ -57,13 +59,14 @@ public class GetNotificationService extends NotificationListenerService {
                 //get ticker of notification
 
                 Log.d("Package: ", pack);
-                //Log.d("Ticker: ", ticker);
+                Log.d("PostedTime: ", timestamp);
+
                 Log.d("Title: ", title);
                 Log.d("Content: ", content);
 
-                db.createRecord(pack, title, content);
+                db.createRecord(pack, title, content, timestamp);
 
-                Log.d("Query Test", db.fetchpack(pack, title, content));
+                Log.d("Query Test", db.fetchpack(pack, title, content, timestamp));
 
 				
 				//Add the notification data to an entry
