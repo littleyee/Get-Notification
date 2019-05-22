@@ -12,12 +12,13 @@ public class MyDBAdapter {
     public static final String COLUMN_PACK = "Package";
     public static final String COLUMN_TITLE = "Title";
     public static final String COLUMN_CONTENT = "Content";
-
+    public static final String COLUMN_TIMESTAMP = "TimeStamp";
 
     //Indices
     public static final int INDEX_PACK = 0;
     public static final int INDEX_TITLE = 1;
     public static final int INDEX_CONTENT = 2;
+    public static final int INDEX_TIMESTAMP = 3;
 
     // create tag
     public static final String TAG = "RecordMyDBHelper";
@@ -34,7 +35,8 @@ public class MyDBAdapter {
     private static final String DATABASE_CREATE = "CREATE TABLE if not exists " + TABLE_NAME + " ( " +
             COLUMN_PACK + " VARCHAR(255), " +
             COLUMN_TITLE + " VARCHAR(255), " +
-            COLUMN_CONTENT + " VARCHAR(255) );";
+            COLUMN_CONTENT + " VARCHAR(255), " +
+            COLUMN_TIMESTAMP + " VARCHAR(255) );";
 
 
     public MyDBAdapter(Context mycontext) {
@@ -53,15 +55,18 @@ public class MyDBAdapter {
         }
     }
 
-    public void createRecord (String packname, String title, String content) {
+    public void createRecord (String packname, String title, String content,String timestamp ) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_PACK, packname);
         values.put(COLUMN_TITLE, title);
         values.put(COLUMN_CONTENT, content);
+        values.put(COLUMN_TIMESTAMP, timestamp);
+
+
         db.insert(TABLE_NAME, null, values);
     }
 
-    public String fetchpack(String packname, String title, String content) {
+    public String fetchpack(String packname, String title, String content, String timestamp) {
         Cursor cursor = db.query(TABLE_NAME, new String[] {COLUMN_PACK},
                 COLUMN_PACK + "=?",
                 new String[] {String.valueOf(packname)},
@@ -69,11 +74,13 @@ public class MyDBAdapter {
         if(cursor != null) {
             cursor.moveToFirst();
         }
-        return  "Packname = " + packname + " Title = " +  title + " Content = " + content;
+        return  "Packname = " + packname + " Title = " +  title + " Content = " + content +
+                "TimeStamp= " + timestamp ;
     }
 
     public Cursor fetchAllRecords() {
-        Cursor mycursor = db.query(TABLE_NAME, new String[]{COLUMN_PACK, COLUMN_TITLE, COLUMN_CONTENT},
+        Cursor mycursor = db.query(TABLE_NAME, new String[]{COLUMN_PACK, COLUMN_TITLE, COLUMN_CONTENT,
+                COLUMN_TIMESTAMP},
                 null, null, null, null, null);
 
         if(mycursor != null) {
