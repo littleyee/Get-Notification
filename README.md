@@ -27,3 +27,10 @@ Usage: from the command line: python install.py "Path to APK to install" Or:  py
 4. The VM is launching w/ the GUI for now just for ease of verifying the installation: will eventually need to revise to launch in headless mode.
 
 https://developer.android.com/studio/test/monkeyrunner/index.html This is closer to what we will eventually want
+
+## monkeyrunnerTest.py
+
+This is a test Python script using the monkeyrunner tool that is part of the Android SDK.  
+We can use it to load and launch apps on a VM, as well as use it to simulate keypresses/user interaction.
+
+
