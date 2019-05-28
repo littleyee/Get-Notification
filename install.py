@@ -5,7 +5,8 @@ import time
 # Script to launch emulator and install the GetNotification 
 # usage: python install.py <Path to APK>
 # IMPORTANT: For simplicity,script assumes that the path leading to the "emulator" and "platform-tools" folders within the Android SDK have been added to PATH variable
-# These should be in locations like: C:\Users\<UserNameHere>\AppData\Local\Android\Sdk\emulator and C:\Users\<UserNameHere>\AppData\Local\Android\Sdk\platform-tools
+# These should be in locations like: C:\Users\<UserNameHere>\AppData\Local\Android\Sdk\emulator and C:\Users\<UserNameHere>\AppData\Local\Android\Sdk\platform-tools on Windows
+# OSX locations /Users/<User>/Library/Android/sdk/...
 
 # Takes as argument the path to the Get-Notification apk file
 pathToAppApk = sys.argv[1]
