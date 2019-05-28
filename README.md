@@ -26,5 +26,4 @@ Usage: from the command line: python install.py "Path to APK to install" Or:  py
 3. There are a few assumptions about what is in your PATH enviornmental variable in order to run the console commands: I can clarify this when we meet in person.
 4. The VM is launching w/ the GUI for now just for ease of verifying the installation: will eventually need to revise to launch in headless mode.
 
-One solution is a Python package from PyPi: pure-python-adb  
-It might make dealing with the adb commands a bit simpler.
+https://developer.android.com/studio/test/monkeyrunner/index.html This is closer to what we will eventually want
