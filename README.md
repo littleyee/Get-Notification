@@ -16,8 +16,7 @@ An Android application which we are using to log information about notifications
 
 ## install.py:
 
-This is a Python script that launches a VM and installs a specified app via its .apk file.
-It is in an early stage at this point, but it should be a good example for the groundwork:
+This is a Python script that looks for and launches installed VMs and installs a specified app via its .apk file.
 
 Usage: from the command line: python install.py "Path to APK to install" Or:  python3 install.py "Path to APK to install" (It is written in Python 3)
 
