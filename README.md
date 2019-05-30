@@ -16,9 +16,9 @@ An Android application which we are using to log information about notifications
 
 ## install.py:
 
-This is a Python script that looks for and launches installed VMs and installs a specified app via its .apk file.
+This is a Python script that looks for a JSON file which specifies configurations for new VMs, then creates and launches them
 
-Usage: from the command line: python install.py "Path to APK to install" Or:  python3 install.py "Path to APK to install" (It is written in Python 3)
+Usage: from the command line: python install.py "Path to JSON file" Or:  python3 install.py "Path to JSON file" (It is written in Python 3)
 
 1. Be sure to run the build command in Android Studio if there is no .apk file for the app in your local version. Should be in a location like "..\app\build\outputs\apk" or "..\app\build\outputs\apk\debug"
 2. On launch/install of the Get-Notification app, the user is prompted to give the correct permissions to listen to notifications: we will need to find some way to automate the action of giving that access.
