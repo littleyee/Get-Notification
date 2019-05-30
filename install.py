@@ -1,6 +1,7 @@
 import sys
 import subprocess
 import time
+import json
 
 def filterDevices(var):
     if ("emulator" in var):
@@ -11,31 +12,43 @@ def filterDevices(var):
 
 
 # Script to launch emulator and install the GetNotification 
-# usage: python install.py <Path to APK>
-# IMPORTANT: For simplicity,script assumes that the path leading to the "emulator" and "platform-tools" folders within the Android SDK have been added to PATH variable
-# These should be in locations like: C:\Users\<UserNameHere>\AppData\Local\Android\Sdk\emulator and C:\Users\<UserNameHere>\AppData\Local\Android\Sdk\platform-tools on Windows
+# usage: python install.py <Path to .json file>
+# IMPORTANT: For simplicity,script assumes that the path leading to the "emulator", "platform-tools", and "avdmanager" folders within the Android SDK have been added to PATH variable
+# These should be in locations like: C:\Users\<UserNameHere>\AppData\Local\Android\Sdk\emulator, C:\Users\<UserNameHere>\AppData\Local\Android\Sdk\platform-tools, and C:\Users\<User>\AppData\Local\Android\Sdk\tools\bin on Windows
 # OSX locations /Users/<User>/Library/Android/sdk/...
 
-# Takes as argument the path to the Get-Notification apk file
-pathToAppApk = sys.argv[1]
+
+# Input of path to a .json file specifying a list of vms
+inp = sys.argv[1]
+
+# Open and read the content of the file, and load it as a python object
+with open(inp) as f:
+    jsonList = json.loads(f.read())
+
+# For each device in the list, build and run the avdmanager creation command
+for device in jsonList:
+    create = ['avdmanager', 'create', 'avd',  '-n', device['name'], '-k', device['version'], '-d', device['deviceId']]
+    subprocess.Popen(create, shell=True)
+    time.sleep(15)
+
 # Form console command to list installed vms
 listAvds = ['emulator', '-list-avds']
-# Save result to variable
-# Everything below right now only works for single VM
-# TODO: Change to work with list of VMs
+# Send command to console and save output in stdout to variable
 avds = subprocess.Popen(listAvds, stdout=subprocess.PIPE).communicate()[0].decode("utf-8")
 avdList = avds.split()
 
 
 # launch each emulator from the avd list
-# This sometimes seems to crash a number of the vms when launching like this
+# Be sure to have enough RAM to actually run this (the vms are very RAM and CPU hungry)
+# TODO: switch this to headless launch
+# emulator -> emulator-headless
 for avd in avdList:
     # Launch VM(s)
     launch = ['emulator', '-avd', str(avd)]
     subprocess.Popen(launch, shell=True)
-    time.sleep(60)
+    time.sleep(30)
 
-time.sleep(30)
+# TODO: we need to find some way to wait for the devices to come online more reliably than these sleep commands
 
 # Get a list of the connected devices
 # These are in a different format than the names used to launch (emulator id), hence the different command
@@ -50,9 +63,10 @@ deviceList = devices.split()
 filteredList = list(filter(lambda x : "emulator" in x, deviceList))
 print(filteredList)
 
+# TODO: the code below will need to be changed once we have apk paths in the json file to use
 # For each device, install the Get-Notification APK
-for device in filteredList:
-    install = ['adb', '-s', device, 'install', pathToAppApk]
-    subprocess.Popen(install, shell=True)
+#for device in filteredList:
+#    install = ['adb', '-s', device, 'install', pathToAppApk]
+#    subprocess.Popen(install, shell=True)
 
 
