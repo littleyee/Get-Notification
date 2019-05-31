@@ -46,7 +46,9 @@ for avd in avdList:
     # Launch VM(s)
     if (avd == "Nexus_5X_API_28_x86"):
         continue
+    # Launch in "headless" mode 
     #launch = ['emulator', '-avd', str(avd), '-no-audio', '-no-window']
+    # Launch w/ GUI 
     launch = ['emulator', '-avd', str(avd)]
     subprocess.Popen(launch, shell=True)
     time.sleep(10)
@@ -67,21 +69,41 @@ print(filteredList)
 
 
 time.sleep(10)
-# Wait for devices to boot up fully before executing further commands
+# Wait for devices to boot up fully before executing further commands, then do some more configuration
 for device in filteredList:
+    # command to get status of its boot
     bootStatus = ['adb', '-s', device, 'shell', 'getprop', 'sys.boot_completed']
-    print("Waiting for " + device + " to boot")
+    print("Checking if " + device + " has booted")
+    # Check that the boot is completed on a loop until it is true, then break
     while True:
         booted = subprocess.Popen(bootStatus, stdout=subprocess.PIPE).communicate()[0].decode("utf-8")
-        time.sleep(5)
+        time.sleep(1)
         if booted.strip() == "1":
             print(device + " booted")
             break
+    
+    # For each device, do some configuration
+    # install apks, set location
+    # TODO: Coordinates/location
+    # Need to get the assigned name of the emulators and compare them to names in json file
+    # Have to do this since adb use serial numbers instead of vm names, so we need to jump through some hoops to get the names back
+    getDevName = ['adb', '-s', device, 'emu', 'avd', 'name']
+    out = (subprocess.Popen(getDevName, stdout=subprocess.PIPE).communicate()[0].decode("utf-8")).split()
+    name = (list(filter(lambda x: not("OK" in x), out)))[0]
 
-# TODO: the code below will need to be changed once we have apk paths in the json file to use
-# For each device, install the Get-Notification APK
-#for device in filteredList:
-#    install = ['adb', '-s', device, 'install', pathToAppApk]
-#    subprocess.Popen(install, shell=True)
+    for dev in jsonList:
+        if dev['name'] == name:
+            for apk in dev['apks']:
+                install = ['adb', '-s', device, 'install', apk]
+                subprocess.Popen(install, shell=True) 
+        else:
+            continue
+    time.sleep(5)
+
+
+   
+
+        
+   
 
 

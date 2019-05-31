@@ -4,14 +4,22 @@
         "deviceId": "Galaxy Nexus",
         "version": "system-images;android-28;google_apis;x86",
         "lattitude": 41.6611,
-        "longitude": 91.5302
+        "longitude": 91.5302,
+        "apks": 
+            [
+                "./GetNotification/app/build/outputs/apk/debug/app-debug.apk"
+            ]
     },
     {
         "name": "emu2",
         "deviceId": "Nexus 9",
         "version": "system-images;android-28;google_apis;x86",
         "lattitude": 41.8781,
-        "longitude": 87.6298
+        "longitude": 87.6298,
+        "apks":
+            [
+                "./GetNotification/app/build/outputs/apk/debug/app-debug.apk"
+            ]
     }
 ]
 
