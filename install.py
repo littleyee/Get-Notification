@@ -3,13 +3,6 @@ import subprocess
 import time
 import json
 
-def filterDevices(var):
-    if ("emulator" in var):
-        return True
-    else:
-        return False
-    
-
 
 # Script to launch emulator and install the GetNotification 
 # usage: python install.py <Path to .json file>
@@ -95,7 +88,10 @@ for device in filteredList:
         if dev['name'] == name:
             for apk in dev['apks']:
                 install = ['adb', '-s', device, 'install', apk]
-                subprocess.Popen(install, shell=True) 
+                subprocess.Popen(install, shell=True)
+            print (dev['longitude']) 
+            setCoords = ['adb', '-s', device, 'emu', 'geo', 'fix', dev['longitude'], dev['latitude']]
+            subprocess.Popen(setCoords, shell=True)
         else:
             continue
     time.sleep(5)
