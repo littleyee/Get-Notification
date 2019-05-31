@@ -29,7 +29,7 @@ with open(inp) as f:
 for device in jsonList:
     create = ['avdmanager', 'create', 'avd',  '-n', device['name'], '-k', device['version'], '-d', device['deviceId']]
     subprocess.Popen(create, shell=True)
-    time.sleep(15)
+    time.sleep(10)
 
 # Form console command to list installed vms
 listAvds = ['emulator', '-list-avds']
@@ -40,21 +40,23 @@ avdList = avds.split()
 
 # launch each emulator from the avd list
 # Be sure to have enough RAM to actually run this (the vms are very RAM and CPU hungry)
-# TODO: switch this to headless launch
-# emulator -> emulator-headless
+
+
 for avd in avdList:
     # Launch VM(s)
+    if (avd == "Nexus_5X_API_28_x86"):
+        continue
+    #launch = ['emulator', '-avd', str(avd), '-no-audio', '-no-window']
     launch = ['emulator', '-avd', str(avd)]
     subprocess.Popen(launch, shell=True)
-    time.sleep(30)
-
-# TODO: we need to find some way to wait for the devices to come online more reliably than these sleep commands
-
+    time.sleep(10)
+   
 # Get a list of the connected devices
 # These are in a different format than the names used to launch (emulator id), hence the different command
 # Emulator ids look something like "emulator-port#" i.e. "emulator-5554"
 listConnected = ['adb', 'devices']
 devices = subprocess.Popen(listConnected, stdout=subprocess.PIPE).communicate()[0].decode("utf-8")
+
 
 print(devices)
 
@@ -62,6 +64,19 @@ print(devices)
 deviceList = devices.split()
 filteredList = list(filter(lambda x : "emulator" in x, deviceList))
 print(filteredList)
+
+
+time.sleep(10)
+# Wait for devices to boot up fully before executing further commands
+for device in filteredList:
+    bootStatus = ['adb', '-s', device, 'shell', 'getprop', 'sys.boot_completed']
+    print("Waiting for " + device + " to boot")
+    while True:
+        booted = subprocess.Popen(bootStatus, stdout=subprocess.PIPE).communicate()[0].decode("utf-8")
+        time.sleep(5)
+        if booted.strip() == "1":
+            print(device + " booted")
+            break
 
 # TODO: the code below will need to be changed once we have apk paths in the json file to use
 # For each device, install the Get-Notification APK
