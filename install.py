@@ -2,6 +2,7 @@ import sys
 import subprocess
 import time
 import json
+from geopy.geocoders import Nominatim
 
 
 # Script to launch emulator and install the GetNotification 
@@ -11,8 +12,13 @@ import json
 # OSX locations /Users/<User>/Library/Android/sdk/...
 
 
+
 # Input of path to a .json file specifying a list of vms
 inp = sys.argv[1]
+
+#Initialize geopy geocoder
+locator = Nominatim(user_agent="PushNotifications")
+
 
 # Open and read the content of the file, and load it as a python object
 with open(inp) as f:
@@ -20,16 +26,18 @@ with open(inp) as f:
 
 # For each device in the list, build and run the avdmanager creation command
 for device in jsonList:
+    
     create = ['avdmanager', 'create', 'avd',  '-n', device['name'], '-k', device['version'], '-d', device['deviceId']]
-    subprocess.Popen(create, shell=True)
+    subprocess.Popen(create)
     time.sleep(10)
 
 # Form console command to list installed vms
 listAvds = ['emulator', '-list-avds']
+
 # Send command to console and save output in stdout to variable
 avds = subprocess.Popen(listAvds, stdout=subprocess.PIPE).communicate()[0].decode("utf-8")
 avdList = avds.split()
-
+print(str(avdList))
 
 # launch each emulator from the avd list
 # Be sure to have enough RAM to actually run this (the vms are very RAM and CPU hungry)
@@ -40,10 +48,11 @@ for avd in avdList:
     if (avd == "Nexus_5X_API_28_x86"):
         continue
     # Launch in "headless" mode 
-    #launch = ['emulator', '-avd', str(avd), '-no-audio', '-no-window']
+    #launch = ['emulator-headless', '-avd', str(avd)]
     # Launch w/ GUI 
+    print(str(avd))
     launch = ['emulator', '-avd', str(avd)]
-    subprocess.Popen(launch, shell=True)
+    subprocess.Popen(launch)
     time.sleep(10)
    
 # Get a list of the connected devices
@@ -88,10 +97,12 @@ for device in filteredList:
         if dev['name'] == name:
             for apk in dev['apks']:
                 install = ['adb', '-s', device, 'install', apk]
-                subprocess.Popen(install, shell=True)
-            print (dev['longitude']) 
-            setCoords = ['adb', '-s', device, 'emu', 'geo', 'fix', dev['longitude'], dev['latitude']]
-            subprocess.Popen(setCoords, shell=True)
+                subprocess.Popen(install)
+            location = locator.geocode(dev['location'])
+            lat = location.latitude
+            long = location.longitude
+            setCoords = ['adb', '-s', device, 'emu', 'geo', 'fix', str(long), str(lat)]
+            subprocess.Popen(setCoords)
         else:
             continue
     time.sleep(5)

@@ -1,10 +1,9 @@
 [
     {
         "name": "emu1",
-        "deviceId": "Galaxy Nexus",
+        "deviceId": "5",
         "version": "system-images;android-28;google_apis;x86",
-        "latitude": "41.6611",
-        "longitude": "-91.5302",
+        "location": "Iowa City",
         "apks": 
             [
                 "./GetNotification/app/build/outputs/apk/debug/app-debug.apk"
@@ -12,10 +11,9 @@
     },
     {
         "name": "emu2",
-        "deviceId": "Nexus 9",
+        "deviceId": "14",
         "version": "system-images;android-28;google_apis;x86",
-        "latitude": "41.8781",
-        "longitude": "-87.6298",
+        "location": "Chicago",
         "apks":
             [
                 "./GetNotification/app/build/outputs/apk/debug/app-debug.apk"
