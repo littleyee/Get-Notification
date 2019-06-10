@@ -25,6 +25,15 @@ Usage: from the command line: python install.py "Path to JSON file" Or:  python3
 3. There are a few assumptions about what is in your PATH enviornmental variable in order to run the console commands: I can clarify this when we meet in person. (Paths to the emulator and adb binaries in the Android SDK)
 4. The VM is launching w/ the GUI for now just for ease of verifying the installation: will eventually need to revise to launch in headless mode.
 
+### install.py (6/10/2019 Update):
+
+Updating the install.py script in the following ways:
+
+1. I've switched over to testing this on Linux (Ubuntu 18.04), as suggested, and the behaivor of the subprocess.Popen command had to be changed to accomodate UNIX command line. (Essentially just ommited the shell=True on each)
+2. Since I redownloaded Android Studio, I was able to find that there is indeed a new commandline tool "emulator-headless" that should be what we want.
+3. I was continually getting errors with the avdmanager create command when specifying target devices by name, so I had to switch to the associated integer ids given to them by avdmanager (Galaxy Nexus -> 5, etc.). I'll keep working to see if there's any solutions I can find, but my guess is that the command was not playing nice with the spaces in the names.
+4. Lastly, there is actual new functionality implemented. Using the Python library geopy (https://pypi.org/project/geopy/), the JSON file can now specify location by city name, which is used as an argument for a geopy function that returns a location from which we can pull (lat,long) coordinates.
+
 
 ## monkeyrunnerTest.py
 https://developer.android.com/studio/test/monkeyrunner/index.html This is closer to what we will eventually want for event simulation. 
