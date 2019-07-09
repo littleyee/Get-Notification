@@ -1,7 +1,7 @@
 [
     {
         "name": "emu1",
-        "deviceId": "5",
+        "deviceId": "9",
         "version": "system-images;android-28;google_apis;x86",
         "location": "Iowa City",
         "apks": 
@@ -11,7 +11,7 @@
     },
     {
         "name": "emu2",
-        "deviceId": "14",
+        "deviceId": "5",
         "version": "system-images;android-28;google_apis;x86",
         "location": "Chicago",
         "apks":

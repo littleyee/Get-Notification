@@ -86,7 +86,6 @@ for device in filteredList:
     
     # For each device, do some configuration
     # install apks, set location
-    # TODO: Coordinates/location
     # Need to get the assigned name of the emulators and compare them to names in json file
     # Have to do this since adb use serial numbers instead of vm names, so we need to jump through some hoops to get the names back
     getDevName = ['adb', '-s', device, 'emu', 'avd', 'name']
