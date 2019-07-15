@@ -11,9 +11,14 @@ import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
 
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 
 @SuppressLint("OverrideAbstract")
 public class GetNotificationService extends NotificationListenerService {
+
     MyDBAdapter db = new MyDBAdapter(this);
 	// Declare database helper object
 	// i.e. MyDBHelper mDB;

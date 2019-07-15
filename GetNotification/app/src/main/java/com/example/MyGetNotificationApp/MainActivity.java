@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 
 public class MainActivity extends AppCompatActivity {
     MyDBAdapter db = new MyDBAdapter(this);
@@ -34,6 +38,17 @@ public class MainActivity extends AppCompatActivity {
                     Cursor c = db.fetchAllRecords();
                     c.moveToLast();
                     t1.setText(c.getString(c.getColumnIndex("Content")));
+                    /*
+                    try{
+                        URL url = new URL("toutatis.cs.uiowa.edu");
+                        HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                        conn.setDoOutput(true);
+                        conn.setRequestMethod("POST");
+                        conn.setRequestProperty("Content-Type", "application/json");
+                        conn.connect();
+                    } catch (MalformedURLException e){
+
+                    }*/
 
                 } catch(Exception e){
                     t1.setText("Something went wrong");
