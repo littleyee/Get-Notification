@@ -1,5 +1,8 @@
 # Script to install, start, and accept proper permissions for the Notification Listener
 # Using the coordinates extracted from AndroidViewClient dump, it should work for any given device model/screen sizes
+# Depends on the tool "AndroidViewClient" (https://github.com/dtmilano/AndroidViewClient)
+# Assumes the above is installed/downloaded, and have /path/to/AndroidViewClient/tools in PATH
+# Also requires /path/to/Android/Sdk/platform-tools be in the PATH
 import sys
 import subprocess
 import time
