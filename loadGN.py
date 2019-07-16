@@ -51,11 +51,17 @@ for dev in filteredList:
     dumpOut = subprocess.Popen(dump, stdout=subprocess.PIPE).communicate()[0].decode("utf-8")
     dumpOut = dumpOut.split("\n")
     time.sleep(1)
-    # Find and tap the ALLOW option    
+    # Find and tap the ALLOW/Allow option 
+    # If line/element is not a button, we can skip 
+    # (This lets us ignore any random text w/ the word Allow in it)   
     for line in dumpOut:
-        if "ALLOW" in line:
-            tapElement(line, dev)
-            break
+        print(line)
+        if not "Button" in line:
+            continue
+        else:
+            if "ALLOW" in line or "Allow" in line:
+                tapElement(line, dev)
+                break
     # Return to the Notification Listener app screen
     time.sleep(1)
     subprocess.Popen(back)
