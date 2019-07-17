@@ -22,7 +22,7 @@ def tapElement(line, dev):
     subprocess.Popen(tap)
 
 for dev in filteredList:
-    install = ['adb', '-s', dev, 'install', './GetNotification/app/build/outputs/apk/debug/app-debug.apk']
+    install = ['adb', '-s', dev, 'install', './APKS/app-debug.apk']
     start = ['adb', '-s', dev, 'shell', 'monkey', '-p', 'com.example.GetNotificationService', '-c', 'android.intent.category.LAUNCHER', '1']
     dump = ['dump', '-c', dev]
     back = ['adb', '-s', dev, 'shell', 'input', 'keyevent', 'KEYCODE_BACK']
