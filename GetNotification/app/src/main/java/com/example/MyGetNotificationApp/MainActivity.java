@@ -35,9 +35,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     db.open();
+                    String text = "";
                     Cursor c = db.fetchAllRecords();
-                    c.moveToLast();
-                    t1.setText(c.getString(c.getColumnIndex("Content")));
+                    c.moveToFirst();
+                    while (c.moveToNext()){
+                        text += c.getString(c.getColumnIndex("Content")) + "\n";
+                    }
+                    t1.setText(text);
+                    c.close();
+                   /* c.moveToLast();
+                    t1.setText(c.getString(c.getColumnIndex("Content")));*/
                     /*
                     try{
                         URL url = new URL("toutatis.cs.uiowa.edu");
