@@ -6,7 +6,7 @@
         "location": "Iowa City",
         "apks": 
             [
-                "./GetNotification/app/build/outputs/apk/debug/app-debug.apk"
+                "./APKs/app-debug.apk"
             ]
     },
     {
@@ -16,7 +16,7 @@
         "location": "Chicago",
         "apks":
             [
-                "./GetNotification/app/build/outputs/apk/debug/app-debug.apk"
+                "./APKs/app-debug.apk"
             ]
     }
 ]
