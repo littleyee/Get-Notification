@@ -1,19 +1,20 @@
 [
-    {
-        "name": "emu1",
-        "deviceId": "9",
-        "version": "system-images;android-28;google_apis;x86",
-        "location": "Iowa City",
-        "apks": 
-            [
-                "./APKs/app-debug.apk"
-            ]
-    },
+   
     {
         "name": "emu2",
         "deviceId": "5",
         "version": "system-images;android-28;google_apis;x86",
         "location": "Chicago",
+        "apks":
+            [
+                "./APKs/app-debug.apk"
+            ]
+    },
+    {
+        "name": "emu3",
+        "deviceId": "5",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Madison",
         "apks":
             [
                 "./APKs/app-debug.apk"
