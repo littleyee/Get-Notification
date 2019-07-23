@@ -29,7 +29,7 @@ for device in jsonList:
     
     create = ['avdmanager', 'create', 'avd',  '-n', device['name'], '-k', device['version'], '-d', device['deviceId']]
     subprocess.Popen(create)
-    time.sleep(10)
+    time.sleep(2)
 
 # Form console command to list installed vms
 listAvds = ['emulator', '-list-avds']
@@ -45,15 +45,12 @@ print(str(avdList))
 
 for avd in avdList:
     # Launch VM(s)
-    if (avd == "Nexus_5X_API_28_x86"):
-        continue
     # Launch in "headless" mode 
-    #launch = ['emulator-headless', '-avd', str(avd)]
+    launch = ['emulator-headless', '-avd', str(avd), '-gpu', 'off']
     # Launch w/ GUI 
-    print(str(avd))
-    launch = ['emulator', '-avd', str(avd)]
+    #launch = ['emulator', '-avd', str(avd)]
     subprocess.Popen(launch)
-    time.sleep(10)
+    time.sleep(2)
    
 # Get a list of the connected devices
 # These are in a different format than the names used to launch (emulator id), hence the different command
