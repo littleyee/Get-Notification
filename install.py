@@ -5,13 +5,18 @@ import json
 from geopy.geocoders import Nominatim
 
 
-# Script to launch emulator and install the GetNotification 
+# Script to create VMs as specified by  
 # usage: python install.py <Path to .json file>
 # IMPORTANT: For simplicity,script assumes that the path leading to the "emulator", "platform-tools", and "avdmanager" folders within the Android SDK have been added to PATH variable
 # These should be in locations like: C:\Users\<UserNameHere>\AppData\Local\Android\Sdk\emulator, C:\Users\<UserNameHere>\AppData\Local\Android\Sdk\platform-tools, and C:\Users\<User>\AppData\Local\Android\Sdk\tools\bin on Windows
 # OSX locations /Users/<User>/Library/Android/sdk/...
 
-
+# Right now, assumes no other emulators are running
+# It's been harder than expected to keep track of emulators by name
+# (Makes it difficult to assign the right apks, location, etc. to the correct VM)
+# When I moved things to the server, the command I was using to extract the name didn't return any output to the terminal like it did on my machine
+# The current workaround is to just create and launch the VMs one by one, but this assumes it is the only VM running
+# TODO: Find a better solution for keeping track of what emulators are which
 
 # Input of path to a .json file specifying a list of vms
 inp = sys.argv[1]
@@ -58,6 +63,8 @@ for device in jsonList:
     time.sleep(5)
 
 ## The below will be moved to separate scripts/functions to launch all emulators
+##
+##
 # # Form console command to list installed vms
 # listAvds = ['emulator', '-list-avds']
 
