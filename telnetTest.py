@@ -7,6 +7,7 @@ import time
 
 HOST = 'localhost'
 PORT = '5554'
+# Change this to correct authentication token
 AUTH = '555KjfyUBwIiO+h4'
 
 tel = telnetlib.Telnet(HOST, PORT)
