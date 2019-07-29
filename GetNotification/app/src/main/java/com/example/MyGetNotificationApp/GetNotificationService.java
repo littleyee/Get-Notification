@@ -23,9 +23,31 @@ public class GetNotificationService extends NotificationListenerService {
 	// Declare database helper object
 	// i.e. MyDBHelper mDB;
     Context context;
+//    @Override
+//    public void onCreate(){
+//        super.onCreate();
+//        context = getApplicationContext();
+//        Log.i("Service Start", "GNS created as a service");
+//		// Open/Create the Database
+//		// i.e. mDB.open();
+//        try{
+//            db.open();
+//        } catch(SQLException e){
+//            Log.e("SQLException","Error opening database");
+//        }
+//
+//    }
+
+
     @Override
-    public void onCreate(){
-        super.onCreate();
+    public void onNotificationPosted(StatusBarNotification sbn) {
+        Log.i("Notification Found", "Notification was posted");
+        Notification notification = sbn.getNotification();
+
+        if (null == notification) {
+            return;
+        }
+
         context = getApplicationContext();
         Log.i("Service Start", "GNS created as a service");
 		// Open/Create the Database
@@ -34,16 +56,6 @@ public class GetNotificationService extends NotificationListenerService {
             db.open();
         } catch(SQLException e){
             Log.e("SQLException","Error opening database");
-        }
-		
-    }
-    @Override
-    public void onNotificationPosted(StatusBarNotification sbn) {
-        Log.i("Notification Found", "Notification was posted");
-        Notification notification = sbn.getNotification();
-
-        if (null == notification) {
-            return;
         }
 
         //To get details of notification through extras if API > 18
@@ -81,6 +93,6 @@ public class GetNotificationService extends NotificationListenerService {
             }
     }
 
-
+        db.close();
     }
 }

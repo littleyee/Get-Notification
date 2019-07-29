@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     t1.setText(text);
                     c.close();
+                    db.close();
                    /* c.moveToLast();
                     t1.setText(c.getString(c.getColumnIndex("Content")));*/
                     /*

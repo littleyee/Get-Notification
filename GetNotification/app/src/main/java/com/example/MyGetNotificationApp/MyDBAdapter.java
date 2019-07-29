@@ -27,7 +27,7 @@ public class MyDBAdapter {
     private SQLiteDatabase db;
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "Notification_Record";
+    private static final String DATABASE_NAME = "Notification_Record.db";
     private static final String TABLE_NAME = "Notification_Table";
 
     private final Context mycontext;
