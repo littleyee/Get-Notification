@@ -17,7 +17,7 @@ def getName(dev):
 
     port = str(dev).split('-')[1]
     HOST = 'localhost'
-    AUTH = '555KjfyUBwIiO+h4'
+    AUTH = 'NwhG3frGXDUGGYBz'
     tel = telnetlib.Telnet(HOST, port)
     time.sleep(1)
     output = tel.read_very_eager()
@@ -49,13 +49,15 @@ devices = subprocess.Popen(listConnected, stdout=subprocess.PIPE).communicate()[
 deviceList = devices.split()
 filteredList = list(filter(lambda x : "emulator" in x, deviceList))
 
-adbRoot = ['adb', 'root']
-subprocess.Popen(adbRoot)
-time.sleep(3)
+
 
 with open(str(date) + ".sql", 'w') as f:
     f.write('BEGIN TRANSACTION;\nCREATE TABLE Notification_Table ( Package VARCHAR(255), Title VARCHAR(255), Content VARCHAR(255), TimeStamp VARCHAR(255), Location VARCHAR(255) );\n')
     for dev in filteredList:
+        adbRoot = ['adb', '-s', str(dev), 'root']
+        subprocess.Popen(adbRoot)
+        time.sleep(3)
+        
         devName = getName(dev)
         devLoc = getLocation(testFile, devName)
         # if not os.path.exists('./' + str(devName)):
