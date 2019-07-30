@@ -12,6 +12,7 @@ import telnetlib
 import datetime
 import os
 import sys
+import time
 
 def getName(dev):
 
@@ -49,7 +50,9 @@ devices = subprocess.Popen(listConnected, stdout=subprocess.PIPE).communicate()[
 deviceList = devices.split()
 filteredList = list(filter(lambda x : "emulator" in x, deviceList))
 
-
+if (len(filteredList) == 0):
+    print("There are no VMs running")
+    exit
 
 with open(str(date) + ".sql", 'w') as f:
     f.write('BEGIN TRANSACTION;\nCREATE TABLE Notification_Table ( Package VARCHAR(255), Title VARCHAR(255), Content VARCHAR(255), TimeStamp VARCHAR(255), Location VARCHAR(255) );\n')
@@ -58,7 +61,7 @@ with open(str(date) + ".sql", 'w') as f:
         subprocess.Popen(adbRoot)
         time.sleep(3)
         
-        devName = getName(dev)
+        devName = getName(str(dev))
         devLoc = getLocation(testFile, devName)
         # if not os.path.exists('./' + str(devName)):
         #     os.mkdir('./' + str(devName))
@@ -73,7 +76,9 @@ with open(str(date) + ".sql", 'w') as f:
     
         for line in conn.iterdump():
             if ('INSERT INTO \"Notification_Table\"' in line):
-                f.write(line.replace(');', ',\'' + str(devLoc))+ '\');\n')  
+                timestamp = int(line.split(',')[3].replace(');', '').replace('\'', ''))
+                if(timestamp > (time.time() * 1000) - 86400000):
+                    f.write(line.replace(');', ',\'' + str(devLoc))+ '\');\n')  
         conn.close()
     f.write("COMMIT;")
 
