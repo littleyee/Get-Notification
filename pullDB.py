@@ -1,8 +1,10 @@
+#!/usr/bin/python
+
 # Code to pull the databases from running Android VMs
-# Input: File defining the virtual machines for the test (same as one used for VM creation)
+# Input1: File defining the virtual machines for the test (same as one used for VM creation)
+# Input2: Path to save the .sql file to
 # Output: A .sql file w/ entries from all tables
 
-# TODO: Filter out any entry whose timestamp is > 24 hours ago
 
 import subprocess
 import sqlite3
@@ -42,6 +44,7 @@ def getLocation(file, name):
             return device['location']
 
 testFile = sys.argv[1]
+path = sys.argv[2]
 
 date = datetime.date.today()
 
@@ -54,13 +57,12 @@ if (len(filteredList) == 0):
     print("There are no VMs running")
     exit
 
-with open(str(date) + ".sql", 'w') as f:
+with open(path + "/" + str(date) + ".sql", 'w+') as f:
     f.write('BEGIN TRANSACTION;\nCREATE TABLE Notification_Table ( Package VARCHAR(255), Title VARCHAR(255), Content VARCHAR(255), TimeStamp VARCHAR(255), Location VARCHAR(255) );\n')
     for dev in filteredList:
         adbRoot = ['adb', '-s', str(dev), 'root']
         subprocess.Popen(adbRoot)
         time.sleep(3)
-        
         devName = getName(str(dev))
         devLoc = getLocation(testFile, devName)
         # if not os.path.exists('./' + str(devName)):
@@ -80,6 +82,9 @@ with open(str(date) + ".sql", 'w') as f:
                 if(timestamp > (time.time() * 1000) - 86400000):
                     f.write(line.replace(');', ',\'' + str(devLoc))+ '\');\n')  
         conn.close()
+
+        #Remove this file (it isn't needed)
+        subprocess.Popen(['rm', 'Notification_Record.db'])
     f.write("COMMIT;")
 
 
