@@ -16,7 +16,7 @@ from geopy.geocoders import Nominatim
 # (Makes it difficult to assign the right apks, location, etc. to the correct VM)
 # When I moved things to the server, the command I was using to extract the name didn't return any output to the terminal like it did on my machine
 # The current workaround is to just create and launch the VMs one by one, but this assumes it is the only VM running
-# TODO: Find a better solution for keeping track of what emulators are which
+
 
 # Input of path to a .json file specifying a list of vms
 inp = sys.argv[1]
@@ -32,7 +32,7 @@ with open(inp) as f:
 # For each device in the list, build and run the avdmanager creation command
 for device in jsonList:
     
-    create = ['avdmanager', 'create', 'avd',  '-n', device['name'], '-k', device['version'], '-d', device['deviceId']]
+    create = ['avdmanager', 'create', 'avd',  '-n', device['name'], '-k', device['version'], '-d', device['deviceID']]
     bootStatus = ['adb', 'shell', 'getprop', 'sys.boot_completed']
     stop = ['adb', 'emu', 'kill']
     launch = ['emulator-headless', '-avd', str(device['name']), '-gpu', 'off']
@@ -42,9 +42,11 @@ for device in jsonList:
     long = location.longitude
     setCoords = ['adb', 'emu', 'geo', 'fix', str(long), str(lat)]
 
+    time.sleep(2)
     subprocess.Popen(create)
     time.sleep(5)
     subprocess.Popen(launch)
+    time.sleep(2)
     while True:
         booted = subprocess.Popen(bootStatus, stdout=subprocess.PIPE).communicate()[0].decode("utf-8")
         time.sleep(1)
@@ -55,8 +57,8 @@ for device in jsonList:
 
     for apk in device['apks']:
         install = ['adb', 'install', apk]
-        subprocess.Popen(install)
-        time.sleep(5)
+        subprocess.Popen(install).communicate()
+        # time.sleep(5)
 
     subprocess.Popen(stop)
 
