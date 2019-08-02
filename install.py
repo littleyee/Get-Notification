@@ -56,7 +56,7 @@ for device in jsonList:
     subprocess.Popen(setCoords)
 
     for apk in device['apks']:
-        install = ['adb', 'install', apk]
+        install = ['adb', 'install', 'APKs/' + apk]
         subprocess.Popen(install).communicate()
         # time.sleep(5)
 
