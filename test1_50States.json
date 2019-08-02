@@ -4,50 +4,38 @@
         "deviceID": "9",
         "version": "system-images;android-28;google_apis;x86",
         "location": "Montgomery",
-        "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+        "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nytimes.apk", "wsj.apk", "wapo.apk"]
     },
     {
         "name": "test1_2",
         "deviceID": "9",
         "version": "system-images;android-28;google_apis;x86",
         "location": "Juneau",
-        "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+        "apks":
+        
     },
     {
         "name": "test1_3",
         "deviceID": "9",
         "version": "system-images;android-28;google_apis;x86",
-        "location": "Phoenix",
-        "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+        "apks":
+        
     },
     {
         "name": "test1_4",
         "deviceID": "9",
         "version": "system-images;android-28;google_apis;x86",
         "location": "Little Rock",
-        "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+        "apks":
+        
     },
     {
         "name": "test1_5",
         "deviceID": "9",
         "version": "system-images;android-28;google_apis;x86",
         "location": "Sacramento",
-        "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+        "apks":
+       
     },
     {
         "name": "test1_6",
@@ -55,9 +43,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Denver",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_7",
@@ -65,9 +51,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Hartford",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+        
     },
     {
         "name": "test1_8",
@@ -75,9 +59,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Dover",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+        
     },
     {
         "name": "test1_9",
@@ -85,9 +67,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Tallahassee",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+          
     },
     {
         "name": "test1_10",
@@ -95,9 +75,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Atlanta",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+         
     },
     {
         "name": "test1_11",
@@ -105,9 +83,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Honolulu",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+          
     },
     {
         "name": "test1_12",
@@ -115,9 +91,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Boise",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_13",
@@ -125,9 +99,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Springfield",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+         
     },
     {
         "name": "test1_14",
@@ -135,9 +107,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Indianapolis",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+          
     },
     {
         "name": "test1_15",
@@ -145,9 +115,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Des Moines",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+          
     },
     {
         "name": "test1_16",
@@ -155,9 +123,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Topeka",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_17",
@@ -165,9 +131,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Frankfort",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+          
     },
     {
         "name": "test1_18",
@@ -175,9 +139,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Baton Rouge",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+          
     },
     {
         "name": "test1_19",
@@ -185,9 +147,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Augusta",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_20",
@@ -195,9 +155,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Annapolis",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+          
     },
     {
         "name": "test1_21",
@@ -205,9 +163,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Boston",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_22",
@@ -215,9 +171,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Lansing",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+            
     },
     {
         "name": "test1_23",
@@ -225,9 +179,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Saint Paul",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+            
     },
     {
         "name": "test1_24",
@@ -235,9 +187,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Jackson",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+          
     },
     {
         "name": "test1_25",
@@ -245,9 +195,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Jefferson City",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_26",
@@ -255,9 +203,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Helena",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+          
     },
     {
         "name": "test1_27",
@@ -265,9 +211,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Lincoln",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_28",
@@ -275,9 +219,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Carson City",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_29",
@@ -285,9 +227,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Concord",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_30",
@@ -295,9 +235,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Trenton",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+          
     },
     {
         "name": "test1_31",
@@ -305,9 +243,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Santa Fe",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_32",
@@ -315,9 +251,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Albany",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+            
     },
     {
         "name": "test1_33",
@@ -325,9 +259,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Raleigh",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_34",
@@ -335,9 +267,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Bismarck",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_35",
@@ -345,9 +275,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Columbus",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+            
     },
     {
         "name": "test1_36",
@@ -355,9 +283,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Oklahoma City",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_37",
@@ -365,9 +291,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Salem",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+            
     },
     {
         "name": "test1_38",
@@ -375,9 +299,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Harrisburg",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_39",
@@ -385,9 +307,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Providence",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_40",
@@ -395,9 +315,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Columbia",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_41",
@@ -405,9 +323,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Pierre",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_42",
@@ -415,9 +331,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Nashville",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_43",
@@ -425,9 +339,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": " Austin",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_44",
@@ -435,9 +347,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Salt Lake City",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_45",
@@ -445,9 +355,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Montpelier",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_46",
@@ -455,9 +363,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Richmond",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_47",
@@ -465,9 +371,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Olympia",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_48",
@@ -475,9 +379,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Charleston",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_49",
@@ -485,9 +387,7 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Madison",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+           
     },
     {
         "name": "test1_50",
@@ -495,8 +395,6 @@
         "version": "system-images;android-28;google_apis;x86",
         "location": "Cheyenne",
         "apks": 
-            [
-                "abcnews.apk","aol.apk","bbc.apk","buzzfeed.apk","cbsnews.apk","espn.apk","foxnews.apk","msnbc.apk","reddit.apk","reuters.apk","usatoday.apk","yahoonews.apk"
-            ]
+            
     }
 ]
