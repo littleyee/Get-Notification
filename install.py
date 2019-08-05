@@ -35,7 +35,7 @@ for device in jsonList:
     create = ['avdmanager', 'create', 'avd',  '-n', device['name'], '-k', device['version'], '-d', device['deviceID']]
     bootStatus = ['adb', 'shell', 'getprop', 'sys.boot_completed']
     stop = ['adb', 'emu', 'kill']
-    launch = ['emulator-headless', '-avd', str(device['name']), '-gpu', 'off']
+    launch = ['emulator-headless', '-avd', str(device['name']), '-gpu', 'off', '-noaudio']
     
     location = locator.geocode(device['location'])
     lat = location.latitude
