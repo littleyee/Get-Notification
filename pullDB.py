@@ -61,16 +61,14 @@ with open(path + "/" + str(date) + ".sql", 'w+') as f:
     f.write('BEGIN TRANSACTION;\nCREATE TABLE Notification_Table ( Package VARCHAR(255), Title VARCHAR(255), Content VARCHAR(255), TimeStamp VARCHAR(255), Location VARCHAR(255) );\n')
     for dev in filteredList:
         adbRoot = ['adb', '-s', str(dev), 'root']
-        subprocess.Popen(adbRoot)
-        time.sleep(3)
+        subprocess.Popen(adbRoot).communicate()
         devName = getName(str(dev))
         devLoc = getLocation(testFile, devName)
         # if not os.path.exists('./' + str(devName)):
         #     os.mkdir('./' + str(devName))
         # adbPull = ['adb', '-s', dev, 'pull', 'data/data/com.example.GetNotificationService/databases/Notification_Record.db',  './' + str(devName) + '/' + str(devName) + '_' + str(date) + '.db']
         adbPull = ['adb', '-s', dev, 'pull', 'data/data/com.example.GetNotificationService/databases/Notification_Record.db']
-        subprocess.Popen(adbPull)
-        time.sleep(1)
+        subprocess.Popen(adbPull).communicate()
         conn = sqlite3.connect('Notification_Record.db')
 
         dump = str(date) + ".sql"
