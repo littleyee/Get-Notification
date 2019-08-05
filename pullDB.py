@@ -76,7 +76,7 @@ with open(path + "/" + str(date) + ".sql", 'w+') as f:
     
         for line in conn.iterdump():
             if ('INSERT INTO \"Notification_Table\"' in line):
-                timestamp = int(line.split(',')[3].replace(');', '').replace('\'', ''))
+                timestamp = int(line.split(',')[-1].replace(');', '').replace('\'', ''))
                 if(timestamp > (time.time() * 1000) - 86400000):
                     f.write(line.replace(');', ',\'' + str(devLoc))+ '\');\n')  
         conn.close()
