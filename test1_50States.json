@@ -18,6 +18,7 @@
         "name": "test1_3",
         "deviceID": "9",
         "version": "system-images;android-28;google_apis;x86",
+        "location": "Phoenix",
          "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"]
         
     },
