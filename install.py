@@ -43,10 +43,10 @@ for device in jsonList:
     setCoords = ['adb', 'emu', 'geo', 'fix', str(long), str(lat)]
 
     time.sleep(2)
-    subprocess.Popen(create)
-    time.sleep(5)
+    subprocess.Popen(create).communicate()
+    #time.sleep(5)
     subprocess.Popen(launch)
-    time.sleep(2)
+    #time.sleep(2)
     while True:
         booted = subprocess.Popen(bootStatus, stdout=subprocess.PIPE).communicate()[0].decode("utf-8")
         time.sleep(1)
