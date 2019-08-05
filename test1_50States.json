@@ -368,7 +368,7 @@
     },
     {
         "name": "test1_47",
-        "deviceId": "9",
+        "deviceID": "9",
         "version": "system-images;android-28;google_apis;x86",
         "location": "Olympia",
          "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
@@ -376,7 +376,7 @@
     },
     {
         "name": "test1_48",
-        "deviceId": "9",
+        "deviceID": "9",
         "version": "system-images;android-28;google_apis;x86",
         "location": "Charleston",
          "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
@@ -392,7 +392,7 @@
     },
     {
         "name": "test1_50",
-        "deviceId": "9",
+        "deviceID": "9",
         "version": "system-images;android-28;google_apis;x86",
         "location": "Cheyenne",
          "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
