@@ -69,7 +69,7 @@ with open(path + "/" + str(date) + ".sql", 'w+') as f:
         # adbPull = ['adb', '-s', dev, 'pull', 'data/data/com.example.GetNotificationService/databases/Notification_Record.db',  './' + str(devName) + '/' + str(devName) + '_' + str(date) + '.db']
         adbPull = ['adb', '-s', dev, 'pull', 'data/data/com.example.GetNotificationService/databases/Notification_Record.db']
         subprocess.Popen(adbPull).communicate()
-        conn = sqlite3.connect('Notification_Record.db')
+        conn = sqlite3.connect('./Notification_Record.db')
 
         dump = str(date) + ".sql"
         
@@ -78,11 +78,11 @@ with open(path + "/" + str(date) + ".sql", 'w+') as f:
             if ('INSERT INTO \"Notification_Table\"' in line):
                 timestamp = int(line.split(',')[-1].replace(');', '').replace('\'', ''))
                 if(timestamp > (time.time() * 1000) - 86400000):
-                    f.write(line.replace(');', ',\'' + str(devLoc))+ '\');\n')  
+                    f.write((line.replace(');', ',\'' + str(devLoc))+ '\');\n').encode('ascii', 'ignore'))  
         conn.close()
 
         #Remove this file (it isn't needed)
-        subprocess.Popen(['rm', 'Notification_Record.db'])
+        subprocess.Popen(['rm', './Notification_Record.db']).communicate()
     f.write("COMMIT;")
 
 
