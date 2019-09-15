@@ -1,0 +1,53 @@
+[
+    {
+        "action":"start",
+        "package":"com.bostonglobe.android"
+    },
+    {
+        "action":"click",
+        "text":"ImageButton"
+    },
+    {
+        "action":"click",
+        "text":"id/action_settings"
+    },
+    {
+        "action":"swipe",
+        "direction":"up"
+    },
+    {
+        "action":"swipe",
+        "direction":"up"
+    },
+    {
+        "action":"click",
+        "text":"Edit Alert Settings"
+    },
+    {
+        "action":"click",
+        "text":"Allow Notifications OFF"
+    },
+    {
+        "action":"close"
+    },
+    {
+        "action":"start",
+        "package":"com.apptivateme.next.ct"
+    },
+    {
+        "action":"click",
+        "text":"No, thanks"
+    }, 
+    {
+        "action":"clickCoords",
+        "x":"675",
+        "y":"1720"
+    },
+    {
+        "action":"click",
+        "text":"SIGN UP"
+    },
+    {
+        "action":"close"
+    }
+]
