@@ -72,6 +72,7 @@ def listConnected():
     return filteredList
 
 def triggerNotifs(dev):
+    openStatusBar = ['adb', '-s', str(dev), 'shell', 'input', 'swipe', '500', '0', '500', '900']
     while(True):
         # Here's one cycle of targeting a notif.
         # Have to repeat this for each non system notification
@@ -98,7 +99,7 @@ def triggerNotifs(dev):
                 break
             elif (not("id/expand_button" in dumpOut[i]) and i == len(dumpOut) - 1):
                 subprocess.Popen(home).communicate()
-
+                time.sleep(1)
                
                 return
 
@@ -106,6 +107,7 @@ def triggerNotifs(dev):
     return
 
 inp = sys.argv[1]
+path = sys.argv[2]
 
 date = str(datetime.date.today())
 
@@ -156,7 +158,7 @@ for dev in filteredList:
 
     devName = getName(dev)
     print(devName)
-    mitmdump = ['mitmdump', '--listen-host', '192.168.122.1', '--listen-port', '8890', '-w', devName + '_' + date + '.cap']
+    mitmdump = ['mitmdump', '--listen-host', '192.168.122.1', '--listen-port', '8890', '-w', path + '/' + devName + '_' + date + '.dump']
     relaunch = ['emulator', '-avd', devName, '-noaudio', '-writable-system']
     proxy = subprocess.Popen(mitmdump)
 
