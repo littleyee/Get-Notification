@@ -116,6 +116,10 @@ with open(inp) as f:
 
 
 stopList = listConnected()
+
+if (len(stopList) == 0):
+    exit()
+    
 for dev in stopList:
     stop = ['adb', '-s', str(dev), 'emu', 'kill']
     subprocess.Popen(stop).communicate()
