@@ -158,7 +158,7 @@ for dev in filteredList:
 
     devName = getName(dev)
     print(devName)
-    mitmdump = ['mitmdump', '--listen-host', '192.168.122.1', '--listen-port', '8890', '-w', path + '/' + devName + '_' + date + '.dump']
+    mitmdump = ['mitmdump', '--listen-host', '192.168.122.1', '--listen-port', '8890', '-w', path + '/' + devName + '_' + date + '.flow']
     relaunch = ['emulator', '-avd', devName, '-noaudio', '-writable-system']
     proxy = subprocess.Popen(mitmdump)
 
