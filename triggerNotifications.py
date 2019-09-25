@@ -10,8 +10,8 @@ import datetime
 def getName(dev):
     port = str(dev).split('-')[1]
     HOST = 'localhost'
-    # AUTH = 'NwhG3frGXDUGGYBz'
-    AUTH = '555KjfyUBwIiO+h4'
+    AUTH = 'NwhG3frGXDUGGYBz'
+#     AUTH = '555KjfyUBwIiO+h4'
     tel = telnetlib.Telnet(HOST, port)
     time.sleep(1)
     output = tel.read_very_eager()
@@ -55,14 +55,15 @@ def getPackNames(dev):
 ## Home
 def dismissApp(dev):
     switch = ['adb', '-s', str(dev), 'shell', 'input', 'keyevent', 'KEYCODE_APP_SWITCH']
-    swipe = ['adb', '-s', str(dev), 'shell', 'input', 'swipe', '500', '800', '500', '100']
+    swipe = ['adb', '-s', str(dev), 'shell', 'input', 'swipe', '360', '421', '360', '100']
     home = ['adb', '-s', str(dev), 'shell', 'input', 'keyevent', 'KEYCODE_HOME']
 
     subprocess.Popen(switch).communicate()
-    time.sleep(1)
+    time.sleep(5)
     subprocess.Popen(swipe).communicate()
-    time.sleep(1)
+    time.sleep(5)
     subprocess.Popen(home).communicate()
+    time.sleep(3)
 
 def listConnected():
     listConnected = ['adb', 'devices']
@@ -131,7 +132,7 @@ for dev in stopList:
 
 print("State saved")
 for device in jsonList:
-    launch = ['emulator', '-avd', str(device['name']), '-noaudio', '-writable-system', '-http-proxy', '192.168.122.1:8890']
+    launch = ['emulator', '-avd', str(device['name']), '-noaudio', '-writable-system', '-http-proxy', '127.0.0.1:8890']
     subprocess.Popen(launch)
 
 
@@ -162,11 +163,17 @@ for dev in filteredList:
 
     devName = getName(dev)
     print(devName)
-    mitmdump = ['mitmdump', '--listen-host', '192.168.122.1', '--listen-port', '8890', '-w', path + '/' + devName + '_' + date + '.flow']
-    relaunch = ['emulator', '-avd', devName, '-noaudio', '-writable-system']
+    mitmdump = ['mitmdump', '--listen-host', '127.0.0.1', '--listen-port', '8890', '-w', path + '/' + devName + '_' + date + '.flow']
+    relaunch = ['emulator', '-avd', devName, '-noaudio', '-gpu', 'off', '-writable-system']
     proxy = subprocess.Popen(mitmdump)
 
 
+    ## Do this twice to attempt to minimize fail rate
+    ## The simulated swipe inputs will occasionally fail and mess up the whole process
+    
+    triggerNotifs(dev)
+    subprocess.Popen(home).communitcate()
+    time.sleep(1)
     triggerNotifs(dev)
 
     ## TODO: Move this to outside of loop?
