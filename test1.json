@@ -1,0 +1,132 @@
+[
+    {
+        "name": "test1_5",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Sacramento",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"]
+       
+    }, 
+    {
+        "name": "test1_6",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Denver",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+           
+    },
+    {
+        "name": "test1_9",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Tallahassee",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+          
+    }, 
+    {
+        "name": "test1_15",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Des Moines",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+          
+    },
+    {
+        "name": "test1_22",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Lansing",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+            
+    },
+    {
+        "name": "test1_23",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Saint Paul",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+            
+    },
+    {
+        "name": "test1_28",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Carson City",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+           
+    },
+    {
+        "name": "test1_29",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Concord",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+           
+    }, 
+    {
+        "name": "test1_32",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Albany",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+            
+    },
+    {
+        "name": "test1_33",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Raleigh",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+           
+    }, 
+    {
+        "name": "test1_35",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Columbus",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+            
+    },
+    {
+        "name": "test1_38",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Harrisburg",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+           
+    },
+    {
+        "name": "test1_43",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": " Austin",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+           
+    },
+    {
+        "name": "test1_44",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Salt Lake City",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+           
+    },
+    {
+        "name": "test1_46",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Richmond",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+           
+    },
+    {
+        "name": "test1_49",
+        "deviceID": "9",
+        "version": "system-images;android-28;google_apis;x86",
+        "location": "Madison",
+         "apks": ["bostonglobe.apk", "ct.apk", "latimes.apk", "nyt.apk", "wsj.apk", "wapo.apk"] 
+           
+    }
+
+
+]
