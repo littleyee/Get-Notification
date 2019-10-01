@@ -13,7 +13,7 @@ with open(inp) as f:
 # Iterate through JSON objects
 # Launch emulators by name
 for device in jsonList:
-    launch = ['emulator-headless', '-avd', str(device['name']), '-gpu', 'off', -'noaudio', 'writable-system']
+    launch = ['emulator-headless', '-avd', str(device['name']), '-gpu', 'off', '-noaudio', '-writable-system']
     subprocess.Popen(launch)
 
 
