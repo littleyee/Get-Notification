@@ -51,6 +51,7 @@ for device in jsonList:
     bootStatus = ['adb', 'shell', 'getprop', 'sys.boot_completed']
     stop = ['adb', 'emu', 'kill']
     launch = ['emulator-headless', '-avd', str(device['name']), '-gpu', 'off', '-noaudio', '-writable-system']
+    enableGPS = ['adb', 'shell', 'settings', 'put', 'secure', 'location_providers_allowed', '+gps']
     
     location = locator.geocode(device['location'])
     lat = location.latitude
@@ -67,9 +68,11 @@ for device in jsonList:
         time.sleep(1)
         if booted.strip() == "1":
             break
-    
+    time.sleep(1)
+    subprocess.Popen(enableGPS).communicate()
+    time.sleep(1)
     setLocation("emulator-5554", long, lat)
-
+    time.sleep(1)
     for apk in device['apks']:
         install = ['adb', 'install', 'APKs/' + apk]
         subprocess.Popen(install).communicate()
