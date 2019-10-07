@@ -3,6 +3,7 @@ import subprocess
 import time
 import json
 from geopy.geocoders import Nominatim
+import telnetlib
 
 
 # Script to create VMs as specified by  
@@ -17,6 +18,20 @@ from geopy.geocoders import Nominatim
 # When I moved things to the server, the command I was using to extract the name didn't return any output to the terminal like it did on my machine
 # The current workaround is to just create and launch the VMs one by one, but this assumes it is the only VM running
 
+
+def setLocation(dev, long, lat):
+    port = str(dev).split('-')[1]
+    HOST = 'localhost'
+    AUTH = 'NwhG3frGXDUGGYBz'
+    # AUTH = '555KjfyUBwIiO+h4'
+    tel = telnetlib.Telnet(HOST, port)
+    time.sleep(1)
+    output = tel.read_very_eager()
+    # print(str(output))
+    tel.write('auth ' + AUTH + '\n')
+    time.sleep(1)
+    tel.write("geo fix " + str(long) + " " + str(lat) + "\n")
+    time.sleep(1)
 
 # Input of path to a .json file specifying a list of vms
 inp = sys.argv[1]
