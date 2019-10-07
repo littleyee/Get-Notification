@@ -55,7 +55,7 @@ for device in jsonList:
     location = locator.geocode(device['location'])
     lat = location.latitude
     long = location.longitude
-    setCoords = ['adb', 'emu', 'geo', 'fix', str(long), str(lat)]
+    # setCoords = ['adb', 'emu', 'geo', 'fix', str(long), str(lat)]
 
     time.sleep(2)
     subprocess.Popen(create).communicate()
@@ -68,7 +68,7 @@ for device in jsonList:
         if booted.strip() == "1":
             break
     
-    subprocess.Popen(setCoords)
+    setLocation("emulator-5554", long, lat)
 
     for apk in device['apks']:
         install = ['adb', 'install', 'APKs/' + apk]
