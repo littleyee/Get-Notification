@@ -6,12 +6,14 @@ import re
 import json
 import telnetlib
 import datetime
+import multiprocessing
+import os
 
 def getName(dev):
     port = str(dev).split('-')[1]
     HOST = 'localhost'
-    AUTH = 'NwhG3frGXDUGGYBz'
-#     AUTH = '555KjfyUBwIiO+h4'
+    # AUTH = 'NwhG3frGXDUGGYBz'
+    AUTH = '555KjfyUBwIiO+h4'
     tel = telnetlib.Telnet(HOST, port)
     time.sleep(1)
     output = tel.read_very_eager()
@@ -74,6 +76,8 @@ def listConnected():
 
 def triggerNotifs(dev):
     openStatusBar = ['adb', '-s', str(dev), 'shell', 'input', 'swipe', '500', '0', '500', '900']
+    home = ['adb', '-s', str(dev), 'shell', 'input', 'keyevent', 'KEYCODE_HOME']
+
     while(True):
         # Here's one cycle of targeting a notif.
         # Have to repeat this for each non system notification
@@ -107,43 +111,7 @@ def triggerNotifs(dev):
 
     return
 
-inp = sys.argv[1]
-path = sys.argv[2]
-
-date = str(datetime.date.today())
-
-with open(inp) as f:
-    jsonList = json.loads(f.read())
-
-
-stopList = listConnected()
-
-if (len(stopList) == 0):
-    exit()
-    
-for dev in stopList:
-    stop = ['adb', '-s', str(dev), 'emu', 'kill']
-    subprocess.Popen(stop).communicate()
-    print("Waiting for state to save")
-    while True:
-        currentList = listConnected()
-        if (not(dev in currentList)):
-            break
-
-print("State saved")
-for device in jsonList:
-    launch = ['emulator', '-avd', str(device['name']), '-noaudio', '-writable-system', '-http-proxy', '127.0.0.1:8890']
-    subprocess.Popen(launch)
-
-
-
-time.sleep(5)
-filteredList = listConnected()
-print("Launched")
-for dev in filteredList:
-    
-
-
+def trigger (dev, port):
     openStatusBar = ['adb', '-s', str(dev), 'shell', 'input', 'swipe', '500', '0', '500', '900']
     home = ['adb', '-s', str(dev), 'shell', 'input', 'keyevent', 'KEYCODE_HOME']
     bootStatus = ['adb', '-s', str(dev), 'shell', 'getprop', 'sys.boot_completed']
@@ -163,8 +131,8 @@ for dev in filteredList:
 
     devName = getName(dev)
     print(devName)
-    mitmdump = ['mitmdump', '--listen-host', '127.0.0.1', '--listen-port', '8890', '-w', path + '/' + devName + '_' + date + '.flow']
-    relaunch = ['emulator', '-avd', devName, '-noaudio', '-gpu', 'off', '-writable-system']
+    mitmdump = ['mitmdump', '--listen-host', '127.0.0.1', '--listen-port', str(port), '-w', path + '/' + date + '/' + devName + '_' + date + '.flow']
+    relaunch = ['emulator-headless', '-avd', devName, '-noaudio', '-gpu', 'off', '-writable-system']
     proxy = subprocess.Popen(mitmdump)
 
 
@@ -172,65 +140,75 @@ for dev in filteredList:
     ## The simulated swipe inputs will occasionally fail and mess up the whole process
     
     triggerNotifs(dev)
-    subprocess.Popen(home).communitcate()
-    time.sleep(1)
-    triggerNotifs(dev)
+#     subprocess.Popen(home).communitcate()
+#     time.sleep(1)
+#     triggerNotifs(dev)
 
+    
+    
+    proxy.terminate()
+    
     ## TODO: Move this to outside of loop?
     ## Sometimes saving state takes minutes to actually complete
     ## Terminate proxy as before, but close/relaunch machines afterwards
     subprocess.Popen(exit).communicate()
+   
+    
     print("Waiting for state to save")
     while True:
         currentList = listConnected()
         if (not(dev in currentList)):
             break
                 
-    proxy.terminate()
+    
     subprocess.Popen(relaunch)
 
-    ## TODO: Make this a function
-    ## When done, return instead of exit
-    # while(True):
-    #     # Here's one cycle of targeting a notif.
-    #     # Have to repeat this for each non system notification
-    #     subprocess.Popen(openStatusBar).communicate()
-    #     time.sleep(3)
-    #     dumpOut = dump(dev)
-        
-    #     for i in range(0, len(dumpOut)):
-    #         # print(str(line.encode('ascii', 'ignore')))
-    #         if ("id/expand_button" in dumpOut[i]):
-    #             # print(str(dumpOut[i].encode('ascii', 'ignore')))
-    #             tapElement(dumpOut[i], str(dev))
-    #             dumpOut2 = dump(dev)
-    #             for line in dumpOut2:
-    #                 if(("id/title" in line or "id/expanded_notification_title" in line) and not(("Android Setup" in line) or ("Preparing for setup" in line))):
-    #                     # print(line.encode('ascii', 'ignore'))
-    #                     tapElement(line, str(dev))
-    #                     time.sleep(10)   
-    #                     subprocess.Popen(home).communicate()
-    #                     time.sleep(2)
-    #                     dismissApp(str(dev))
-    #                     time.sleep(2)
-    #                     break
-    #             break
-    #         elif (not("id/expand_button" in dumpOut[i]) and i == len(dumpOut) - 1):
-    #             subprocess.Popen(home).communicate()
 
-    #             subprocess.Popen(exit).communicate()
-    #             print("Waiting for state to save")
-    #             while True:
-    #                 currentList = listConnected()
-    #                 if (not(dev in currentList)):
-    #                     break
-                
-    #             proxy.kill()
-    #             subprocess.Popen(relaunch)
-    #             break
+if __name__ == '__main__':
+
+    inp = sys.argv[1]
+    path = sys.argv[2]
+
+    date = str(datetime.date.today())
+
+    if not os.path.exists(path + '/' + str(date)):
+        os.mkdir(path + '/' + str(date))
+
+    with open(inp) as f:
+        jsonList = json.loads(f.read())
 
         
+    stopList = listConnected()
+
+    if (len(stopList) == 0):
+        exit()
         
+    for dev in stopList:
+        stop = ['adb', '-s', str(dev), 'emu', 'kill']
+        subprocess.Popen(stop).communicate()
+        print("Waiting for state to save")
+        while True:
+            currentList = listConnected()
+            if (not(dev in currentList)):
+                break
+
+    print("State saved")
+    port = 8890
+    for device in jsonList:
+        launch = ['emulator-headless', '-avd', str(device['name']), '-noaudio', '-gpu', 'off', '-writable-system', '-http-proxy', '127.0.0.1:' + str(port)]
+        subprocess.Popen(launch)
+        port += 1
+
+    
+
+    time.sleep(5)
+    filteredList = listConnected()
+    print("Launched")
+
+    port = 8890 
+    for dev in filteredList:
+        multiprocessing.Process(target=trigger, args=(dev, port)).start()
+        port += 1
         
         
     
