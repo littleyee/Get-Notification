@@ -12,8 +12,8 @@ import os
 def getName(dev):
     port = str(dev).split('-')[1]
     HOST = 'localhost'
-    # AUTH = 'NwhG3frGXDUGGYBz'
-    AUTH = '555KjfyUBwIiO+h4'
+    AUTH = 'NwhG3frGXDUGGYBz'
+#     AUTH = '555KjfyUBwIiO+h4'
     tel = telnetlib.Telnet(HOST, port)
     time.sleep(1)
     output = tel.read_very_eager()
@@ -61,11 +61,11 @@ def dismissApp(dev):
     home = ['adb', '-s', str(dev), 'shell', 'input', 'keyevent', 'KEYCODE_HOME']
 
     subprocess.Popen(switch).communicate()
-    time.sleep(5)
+    time.sleep(2)
     subprocess.Popen(swipe).communicate()
-    time.sleep(5)
+    time.sleep(2)
     subprocess.Popen(home).communicate()
-    time.sleep(3)
+    time.sleep(2)
 
 def listConnected():
     listConnected = ['adb', 'devices']
@@ -75,10 +75,12 @@ def listConnected():
     return filteredList
 
 def triggerNotifs(dev):
-    openStatusBar = ['adb', '-s', str(dev), 'shell', 'input', 'swipe', '500', '0', '500', '900']
+    openStatusBar = ['adb', '-s', str(dev), 'shell', 'service', 'call', 'statusbar', '1']
     home = ['adb', '-s', str(dev), 'shell', 'input', 'keyevent', 'KEYCODE_HOME']
 
     while(True):
+        subprocess.Popen(home).communicate()
+        time.sleep(1)
         # Here's one cycle of targeting a notif.
         # Have to repeat this for each non system notification
         subprocess.Popen(openStatusBar).communicate()
@@ -92,7 +94,7 @@ def triggerNotifs(dev):
                 tapElement(dumpOut[i], str(dev))
                 dumpOut2 = dump(dev)
                 for line in dumpOut2:
-                    if(("id/title" in line or "id/expanded_notification_title" in line) and not(("Android Setup" in line) or ("Preparing for setup" in line))):
+                    if(("id/title" in line or "id/expanded_notification_title" in line) and not(("Android Setup" in line) or ("Preparing for setup" in line) or ("Storage space running out" in line))):
                         # print(line.encode('ascii', 'ignore'))
                         tapElement(line, str(dev))
                         time.sleep(10)   
@@ -112,7 +114,6 @@ def triggerNotifs(dev):
     return
 
 def trigger (dev, port):
-    openStatusBar = ['adb', '-s', str(dev), 'shell', 'input', 'swipe', '500', '0', '500', '900']
     home = ['adb', '-s', str(dev), 'shell', 'input', 'keyevent', 'KEYCODE_HOME']
     bootStatus = ['adb', '-s', str(dev), 'shell', 'getprop', 'sys.boot_completed']
     
@@ -131,26 +132,26 @@ def trigger (dev, port):
 
     devName = getName(dev)
     print(devName)
-    mitmdump = ['mitmdump', '--listen-host', '127.0.0.1', '--listen-port', str(port), '-w', path + '/' + date + '/' + devName + '_' + date + '.flow']
+    mitmdump = ['mitmdump', '--listen-host', '127.0.0.1', '--listen-port', str(port), '-w', path + '/' + date + '/' + devName + '_' + date + '.flow', '--quiet']
     relaunch = ['emulator-headless', '-avd', devName, '-noaudio', '-gpu', 'off', '-writable-system']
     proxy = subprocess.Popen(mitmdump)
 
 
-    ## Do this twice to attempt to minimize fail rate
-    ## The simulated swipe inputs will occasionally fail and mess up the whole process
+    ## Do this twice to attempt to minimize fail rate?
+    ## The simulated swipe inputs will occasionally (10 - 15% is my rough est.) fail and mess up the whole process
     
     triggerNotifs(dev)
-#     subprocess.Popen(home).communitcate()
-#     time.sleep(1)
-#     triggerNotifs(dev)
+    time.sleep(1)
+    triggerNotifs(dev)
+    time.sleep(1)
+    triggerNotifs(dev)
+    time.sleep(1)
+    
 
     
     
     proxy.terminate()
     
-    ## TODO: Move this to outside of loop?
-    ## Sometimes saving state takes minutes to actually complete
-    ## Terminate proxy as before, but close/relaunch machines afterwards
     subprocess.Popen(exit).communicate()
    
     
@@ -205,14 +206,17 @@ if __name__ == '__main__':
     filteredList = listConnected()
     print("Launched")
 
+    
     port = 8890 
     for dev in filteredList:
-        multiprocessing.Process(target=trigger, args=(dev, port)).start()
+        p = multiprocessing.Process(target=trigger, args=(dev, port)).start()
         port += 1
         
         
+        
+    print("Complete")
     
-
+    
 
 
     
